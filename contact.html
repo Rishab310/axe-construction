@@ -25,6 +25,25 @@
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    </script>
+    <script>
+        function SubForm() {
+            $.ajax({
+                url: 'https://api.apispreadsheets.com/data/11188/',
+                type: 'post',
+                data: $("#myForm").serializeArray(),
+                success: function () {
+                    console.log("success");
+                    alert("Form Data Submitted :)");
+                },
+                error: function () {
+                    console.log("failed");
+                    alert("There was an error :(");
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -140,18 +159,18 @@
                     <div class="col-md-8">
                         <div class="contact-form mb-40">
                             <h3>Contact form</h3>
-                            <form action="#">
+                            <form id="myForm">
                                 <div class="row">
                                     <div class="col-xl-6">
-                                        <input type="text" placeholder="Your Name">
+                                        <input type="text" name="name" placeholder="Your Name">
                                     </div>
                                     <div class="col-xl-6">
-                                        <input type="text" placeholder="Your Mail">
+                                        <input type="text" name="email" placeholder="Your Mail">
                                     </div>
                                     <div class="col-xl-12">
-                                        <textarea name="message" cols="30" rows="10"
+                                        <textarea name="message" name="message" cols="30" rows="10"
                                             placeholder="Your Massage"></textarea>
-                                        <button class="thm-btn" type="submit">Send Message</button>
+                                        <button class="thm-btn" onclick="SubForm()" type="submit">Send Message</button>
                                     </div>
                                 </div>
                             </form>
@@ -214,7 +233,7 @@
 
     <!-- footer start -->
     <footer>
-        
+
         <div class="footer-area footer-2 footer-height pt-100 pb-40">
             <div class="container">
                 <div class="row">
